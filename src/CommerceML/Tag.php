@@ -27,5 +27,5 @@ interface Tag
     /**
      * @return string Russian representation of tag name
      */
-    function commerceMLRepresentation(): string;
+    static function commerceMLRepresentation(): string;
 }

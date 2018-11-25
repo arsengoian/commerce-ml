@@ -9,42 +9,61 @@
 namespace CommerceML\Nodes;
 
 
-use CommerceML\CompositeNode;
-use CommerceML\Node;
+use CommerceML\Node\Composite;
+use CommerceML\Node\Node;
+use CommerceML\Node\Collection;
 
-abstract class Document extends Node implements CompositeNode
+abstract class Document extends Node implements Composite
 {
 
-    /**
-     * @return string Russian representation of tag name
-     */
-    function commerceMLRepresentation (): string
+    public static function commerceMLRepresentation (): string
     {
         return 'Документ';
     }
 
-    /**
-     * @return array ChildFields [method name => russian name]
-     * If a method of this instance returns string, a tag is parsed.
-     * If it returns a node, a node is parsed.
-     *
-     * If it returns an array, the method is checked against getArrayFields.
-     * If the child is not present in getArrayFields, it is assumed a string and named by its russian name from this method
-     * If a the child is present, its russian name is taken from the getCommerceMLRepresentation()
-     *
-     * @see ArrayNode
-     *
-     * If a method doesn't exist, the tag is not added.
-     */
-    function getChildFields (): array
+
+    public static function getChildFields (): array
     {
         return [
             'id' => 'Ид',
-            'number' => 'Номер'
+            'number' => 'Номер',
+            'date' => 'Дата',
+            'ecoOperation' => 'ХозОперация',
+            'role' => 'Роль',
+            'currency' => 'Валюта',
+            'exchangeRate' => 'Курс',
+            'sum' => 'Сумма',
+            'counterparties' => NULL,
+            'time' => 'Время',
+            // Comment?
+            'products' => NULL,
+            'requisiteValues' => NULL
         ];
     }
 
-    abstract public function id();
 
-    abstract public function number();
+    abstract public function id(): string;
+
+    abstract public function number(): string;
+
+    abstract public function date(): string;
+
+    abstract public function ecoOperation(): string;
+
+    abstract public function role(): string;
+
+    abstract public function currency(): string;
+
+    abstract public function exchangeRate(): string;
+
+    abstract public function sum(): string;
+
+    abstract public function counterparties(): Counterparties;
+
+    abstract public function time(): string;
+
+    abstract public function products(): Products;
+
+    abstract public function requisiteValues(): RequisiteValues;
+
 }

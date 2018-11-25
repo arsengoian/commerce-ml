@@ -9,6 +9,8 @@
 namespace CommerceML;
 
 
+use CommerceML\Node\Node;
+
 class Parser
 {
     private $root;
@@ -18,6 +20,13 @@ class Parser
         $this -> root = $root;
     }
 
+    /**
+     * Use this to parse a string to a CommerceML node
+     *
+     * @return Tag
+     * @throws Exceptions\CommerceMLParserException
+     * @throws \ReflectionException
+     */
     public function parse(): Tag
     {
         $simpleXML = simplexml_load_string($this -> root);

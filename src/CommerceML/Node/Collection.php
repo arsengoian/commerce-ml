@@ -6,9 +6,11 @@
  * Time: 9:40 PM
  */
 
-namespace CommerceML;
+namespace CommerceML\Node;
 
-interface ArrayNode extends CompositeNode
+use CommerceML\Node\Composite;
+
+interface Collection extends Composite
 {
 
     /**
@@ -17,6 +19,6 @@ interface ArrayNode extends CompositeNode
      *
      * @return array of [method name => child class]
      */
-    function getArrayFields(): array;
+    static function getArrayFields(): array;
 
 }

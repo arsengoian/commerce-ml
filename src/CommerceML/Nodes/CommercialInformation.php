@@ -9,24 +9,24 @@
 namespace CommerceML\Nodes;
 
 
-use CommerceML\ArrayNode;
-use CommerceML\AttributeContaining;
-use CommerceML\Node;
+use CommerceML\Node\Collection;
+use CommerceML\Node\AttributeContaining;
+use CommerceML\Node\Node;
 use CommerceML\Traits\AttributeComposite;
 
-abstract class CommercialInformation extends Node implements AttributeContaining, ArrayNode
+abstract class CommercialInformation extends Node implements AttributeContaining, Collection
 {
     use AttributeComposite;
 
     /**
      * @return string Russian representation
      */
-    public function commerceMLRepresentation (): string
+    public static function commerceMLRepresentation (): string
     {
         return 'КоммерческаяИнформация';
     }
 
-    public function attributes (): array
+    public static function attributes (): array
     {
         return [
             'schemaVersion' => 'ВерсияСхемы',
@@ -34,22 +34,22 @@ abstract class CommercialInformation extends Node implements AttributeContaining
         ];
     }
 
-    function getChildFields (): array
+    public static function getChildFields (): array
     {
         return [
-            'document' => NULL
+            'documents' => NULL
         ];
     }
 
-    function getArrayFields (): array
+    public static function getArrayFields (): array
     {
         return [
-            'document' => Document::class,
+            'documents' => Document::class,
         ];
     }
 
 
-    abstract function document(): array;
+    abstract function documents(): array;
 
     abstract function schemaVersion(): string;
 

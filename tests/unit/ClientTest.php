@@ -30,22 +30,9 @@ class ClientTest extends TestCase
     {
         $stub = new class extends CommercialInformation {
 
-            function document (): array
+            function documents (): array
             {
-                return [
-                    new class extends Document {
-
-                        public function id ()
-                        {
-                            return 45;
-                        }
-
-                        public function number ()
-                        {
-                            return 143;
-                        }
-                    }
-                ];
+                return [];
             }
 
             function schemaVersion (): string
@@ -61,7 +48,17 @@ class ClientTest extends TestCase
 
         $xml = Client::toString($stub);
 
-        $this -> assertNotFalse(is_string($xml));
+        $this -> assertEquals(trim("<?xml version=\"1.0\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"><Документ><Ид>45</Ид><Номер>143</Номер></Документ><Документ><Ид>45</Ид><Номер>143</Номер></Документ></КоммерческаяИнформация>\n"),
+            trim($xml));
+    }
+
+
+    public function testParsesStubOk() {
+        $stub = "<?xml version=\"1.0\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"><Документ><Ид>44</Ид><Номер>143</Номер></Документ><Документ><Ид>45</Ид><Номер>143</Номер></Документ><Документ><Ид>46</Ид><Номер>143</Номер></Документ></КоммерческаяИнформация>\n";
+
+        $commerceML = Client::toCommerceML($stub);
+
+        self::assertObjectHasAttribute('none', $commerceML);
     }
 
 }

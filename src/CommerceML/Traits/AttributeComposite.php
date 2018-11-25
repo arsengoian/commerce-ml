@@ -10,7 +10,7 @@ namespace CommerceML\Traits;
 
 trait AttributeComposite
 {
-    function tagContents(): ?string
+    public function tagContents(): ?string
     {
         return NULL;
     }

@@ -6,9 +6,12 @@
  * Time: 9:40 PM
  */
 
-namespace CommerceML;
+namespace CommerceML\Node;
 
-interface CompositeNode extends Tag
+use CommerceML\Node\Collection;
+use CommerceML\Tag;
+
+interface Composite extends Tag
 {
     /**
      * @return array ChildFields [method name => russian name]
@@ -19,10 +22,10 @@ interface CompositeNode extends Tag
      * If the child is not present in getArrayFields, it is assumed a string and named by its russian name from this method
      * If a the child is present, its russian name is taken from the getCommerceMLRepresentation()
      *
-     * @see ArrayNode
+     * @see Collection
      *
      * If a method doesn't exist, the tag is not added.
      */
-    function getChildFields(): array;
+    static function getChildFields(): array;
     
 }

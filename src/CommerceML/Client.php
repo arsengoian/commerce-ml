@@ -9,15 +9,36 @@
 namespace CommerceML;
 
 
+use CommerceML\Exceptions\CommerceMLLogicException;
+use CommerceML\Exceptions\CommerceMLParserException;
+use CommerceML\Node\Node;
+
 class Client
 {
-    public static function toCommerceML(string $commerceML): Tag
+    /**
+     * @param string $commerceML
+     * @param array $implementations
+     * @return Tag
+     * @throws CommerceMLLogicException
+     * @throws CommerceMLParserException
+     */
+    public static function toCommerceML(string $commerceML, array $implementations = []): Tag
     {
-        return (new Parser($commerceML)) -> parse();
+        try {
+            if (count($implementations) > 0)
+                Node::overrideImplementations($implementations);
+
+            return (new Parser($commerceML)) -> parse();
+        } catch (\ReflectionException $e) {
+            throw new CommerceMLLogicException($e -> getMessage(), $e -> getCode(), $e);
+        }
     }
+
 
     public static function toString(Tag $root): string
     {
+        // TODO encoding
         return (new Encoder($root)) -> toCommerceML();
     }
+
 }

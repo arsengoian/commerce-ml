@@ -6,7 +6,9 @@
  * Time: 9:40 PM
  */
 
-namespace CommerceML;
+namespace CommerceML\Node;
+
+use CommerceML\Tag;
 
 /**
  * @return string
@@ -26,5 +28,5 @@ interface AttributeContaining extends Tag
      * The value of the attribute is the return value of the function
      * Else nothing happens
      */
-    function attributes(): array;
+    static function attributes(): array;
 }
