@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>./tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/CommerceML</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="./root/coverage" lowUpperBound="35" highLowerBound="70"/>
+    </logging>
+</phpunit>

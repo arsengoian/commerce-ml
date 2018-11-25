@@ -1,0 +1,23 @@
+{
+	"name": "arsengoian/commerceML",
+	"description": "Easy-peasy CommerceML 2.10 PHP library",
+	"license": "Apache-2.0",
+	"authors": [{
+		"name": "Arsen Goian",
+		"email": "arsengoian@gmail.com"
+	}],
+	"autoload": {
+		"psr-4": {
+			"CommerceML\\": ["src/CommerceML"],
+			"Test\\": ["tests/unit"]
+		}
+	},
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=7.1.0",
+      	"ext-json": "*"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "6.5"
+	}
+}
