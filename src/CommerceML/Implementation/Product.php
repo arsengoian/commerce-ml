@@ -18,14 +18,14 @@ use CommerceML\Nodes\RequisiteValues;
 
 class Product extends \CommerceML\Nodes\Product implements Implementation
 {
-    private $id;
-    private $name;
-    private $catalogID;
-    private $baseUnit;
-    private $pricePerUnit;
-    private $quantity;
-    private $sum;
-    private $requisiteValues;
+    protected $id;
+    protected $name;
+    protected $catalogID;
+    protected $baseUnit;
+    protected $pricePerUnit;
+    protected $quantity;
+    protected $sum;
+    protected $requisiteValues;
 
     use DefaultImplementation;
 

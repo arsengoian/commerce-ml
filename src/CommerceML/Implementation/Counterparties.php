@@ -11,13 +11,19 @@ namespace CommerceML\Implementation;
 
 use CommerceML\DefaultImplementation;
 use CommerceML\Implementation;
+use ArrayAccess;
+use CommerceML\Traits\ImplementsCollection;
+use IteratorAggregate;
+use Countable;
 
-class Counterparties extends \CommerceML\Nodes\Counterparties implements Implementation
+class Counterparties extends \CommerceML\Nodes\Counterparties implements Implementation, ArrayAccess, IteratorAggregate, Countable
 {
-    private $counterparties;
+    protected $counterparties;
 
     use DefaultImplementation;
 
+    use ImplementsCollection;
+    const DATA_FIELD = 'counterparties';
 
     public function counterparties (): array
     {

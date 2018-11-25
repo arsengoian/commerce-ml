@@ -17,24 +17,24 @@ use CommerceML\Nodes\RequisiteValues;
 
 class Document extends \CommerceML\Nodes\Document implements Implementation
 {
-    private $id;
-    private $number;
-    private $date;
-    private $ecoOperation;
-    private $role;
-    private $currency;
-    private $exchangeRate;
-    private $sum;
-    private $counterparties;
-    private $time;
-    private $comment;
-    private $products;
-    private $requisiteValues;
+    protected $id;
+    protected $number;
+    protected $date;
+    protected $ecoOperation;
+    protected $role;
+    protected $currency;
+    protected $exchangeRate;
+    protected $sum;
+    protected $counterparties;
+    protected $time;
+    protected $comment;
+    protected $products;
+    protected $requisiteValues;
 
     use DefaultImplementation;
 
     /**
-     * @return int
+     * @return string
      */
     public function id (): string
     {

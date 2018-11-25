@@ -17,7 +17,7 @@ use CommerceML\Nodes\Representatives;
 
 class Representative extends \CommerceML\Nodes\Representative implements Implementation
 {
-    private $counterparty;
+    protected $counterparty;
 
     use DefaultImplementation;
 

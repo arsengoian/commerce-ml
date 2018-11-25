@@ -11,12 +11,20 @@ namespace CommerceML\Implementation;
 
 use CommerceML\DefaultImplementation;
 use CommerceML\Implementation;
+use ArrayAccess;
+use CommerceML\Traits\ImplementsCollection;
+use IteratorAggregate;
+use Countable;
 
-class RequisiteValues extends \CommerceML\Nodes\RequisiteValues implements Implementation
+class RequisiteValues extends \CommerceML\Nodes\RequisiteValues implements Implementation, ArrayAccess, IteratorAggregate, Countable
 {
-    private $requisiteValues;
+    protected $requisiteValues;
+
 
     use DefaultImplementation;
+
+    use ImplementsCollection;
+    const DATA_FIELD = 'requisiteValues';
 
 
     public function requisiteValues (): array

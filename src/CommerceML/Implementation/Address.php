@@ -14,10 +14,11 @@ use CommerceML\Implementation;
 
 class Address extends \CommerceML\Nodes\Address implements Implementation
 {
-    private $addressFields;
-    private $representation;
+    protected $addressFields;
+    protected $representation;
 
     use DefaultImplementation;
+
 
 
     public function addressFields (): array

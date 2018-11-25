@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 class ClientTest extends TestCase
 {
 
-
     public function testGeneral ()
     {
         $contents = file_get_contents('E:\Developer\PHP\CommerceML\tests\XML\to.xml');

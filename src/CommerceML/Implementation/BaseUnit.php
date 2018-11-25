@@ -14,9 +14,10 @@ use CommerceML\Implementation;
 
 class BaseUnit extends \CommerceML\Nodes\BaseUnit implements Implementation
 {
-    private $code;
-    private $fullName;
-    private $short;
+    protected $code;
+    protected $fullName;
+    protected $short;
+
 
     use DefaultImplementation;
 

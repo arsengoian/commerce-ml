@@ -14,8 +14,9 @@ use CommerceML\Implementation;
 
 class RequisiteValue extends \CommerceML\Nodes\RequisiteValue implements Implementation
 {
-    private $name;
-    private $value;
+    protected $name;
+    protected $value;
+
 
     use DefaultImplementation;
 

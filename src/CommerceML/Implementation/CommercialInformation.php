@@ -14,11 +14,13 @@ use CommerceML\Implementation;
 
 class CommercialInformation extends \CommerceML\Nodes\CommercialInformation implements Implementation
 {
-    private $documents;
-    private $schemaVersion;
-    private $formationDate;
+    protected $documents;
+    protected $schemaVersion;
+    protected $formationDate;
 
     use DefaultImplementation;
+
+
 
     /**
      * @return mixed

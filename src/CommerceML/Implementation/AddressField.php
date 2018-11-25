@@ -14,8 +14,9 @@ use CommerceML\Implementation;
 
 class AddressField extends \CommerceML\Nodes\AddressField implements Implementation
 {
-    private $type;
-    private $value;
+    protected $type;
+    protected $value;
+
 
     use DefaultImplementation;
 

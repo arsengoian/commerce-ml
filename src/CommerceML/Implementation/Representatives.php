@@ -11,14 +11,19 @@ namespace CommerceML\Implementation;
 
 use CommerceML\DefaultImplementation;
 use CommerceML\Implementation;
-use CommerceML\Nodes\Counterparty;
+use ArrayAccess;
+use CommerceML\Traits\ImplementsCollection;
+use IteratorAggregate;
+use Countable;
 
-class Representatives extends \CommerceML\Nodes\Representatives implements Implementation
+class Representatives extends \CommerceML\Nodes\Representatives implements Implementation, ArrayAccess, IteratorAggregate, Countable
 {
-    private $representatives;
+    protected $representatives;
 
     use DefaultImplementation;
 
+    use ImplementsCollection;
+    const DATA_FIELD = 'representatives';
 
     public function representatives (): array
     {

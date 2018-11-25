@@ -16,15 +16,15 @@ use CommerceML\Nodes\Representatives;
 
 class Counterparty extends \CommerceML\Nodes\Counterparty implements Implementation
 {
-    private $id;
-    private $name;
-    private $rel;
-    private $role;
-    private $fullName;
-    private $lastName;
-    private $firstName;
-    private $address;
-    private $representatives;
+    protected $id;
+    protected $name;
+    protected $rel;
+    protected $role;
+    protected $fullName;
+    protected $lastName;
+    protected $firstName;
+    protected $address;
+    protected $representatives;
 
     use DefaultImplementation;
 
