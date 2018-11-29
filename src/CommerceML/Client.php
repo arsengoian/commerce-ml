@@ -12,6 +12,7 @@ namespace CommerceML;
 use CommerceML\Exceptions\CommerceMLLogicException;
 use CommerceML\Exceptions\CommerceMLParserException;
 use CommerceML\Node\Node;
+use DOMDocument;
 
 class Client
 {
@@ -28,6 +29,10 @@ class Client
             if (count($implementations) > 0)
                 Node::overrideImplementations($implementations);
 
+            ($dom = new DOMDocument()) -> loadXML($commerceML);
+            $dom -> encoding = 'utf-8';
+            $commerceML = $dom ->saveXML();
+
             return (new Parser($commerceML)) -> parse();
         } catch (\ReflectionException $e) {
             throw new CommerceMLLogicException($e -> getMessage(), $e -> getCode(), $e);
@@ -37,8 +42,13 @@ class Client
 
     public static function toString(Tag $root): string
     {
-        // TODO encoding
-        return (new Encoder($root)) -> toCommerceML();
+        $commerceML = (new Encoder($root)) -> toCommerceML();
+
+        ($dom = new DOMDocument()) -> loadXML($commerceML);
+        $dom -> encoding = 'windows-1251';
+        $commerceML = $dom -> saveXML();
+
+        return $commerceML;
     }
 
 }
