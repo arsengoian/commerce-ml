@@ -60,7 +60,7 @@ class Document extends \CommerceML\Nodes\Document implements Implementation
     /**
      * @return mixed
      */
-    public function ecooperation (): string
+    public function ecoOperation (): string
     {
         return $this->ecoOperation;
     }

@@ -49,7 +49,7 @@ class StructureTest extends TestCase
                                 'Sully',
                                 'Jake',
                                 new Address([
-                                    new AddressField('Улица', 'Леся Курбаса'),
+                                    new AddressField('Улица', 'Ул. Тестера'),
                                     new AddressField('Дом', '7а'),
                                     new AddressField('Квартира', '104'),
                                 ], '87698'),
