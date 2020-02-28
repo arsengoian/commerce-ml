@@ -73,7 +73,7 @@ class Counterparty extends \CommerceML\Nodes\Counterparty implements Implementat
 
     public function contacts (): ?Contacts
     {
-        return $this -> address;
+        return $this -> contacts;
     }
 
     public function representatives (): ?Representatives
