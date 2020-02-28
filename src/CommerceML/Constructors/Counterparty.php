@@ -8,6 +8,7 @@
 
 namespace CommerceML\Constructors;
 
+use CommerceML\Implementation\Contacts;
 use CommerceML\Implementation\Representatives;
 use CommerceML\Implementation\Address;
 
@@ -23,6 +24,7 @@ class Counterparty extends \CommerceML\Implementation\Counterparty
      * @param $lastName
      * @param $firstName
      * @param $address
+     * @param $contacts
      * @param $representatives
      */
     public function __construct (
@@ -34,6 +36,7 @@ class Counterparty extends \CommerceML\Implementation\Counterparty
         string $lastName = NULL,
         string $firstName = NULL,
         Address $address = NULL,
+        Contacts $contacts = NULL,
         Representatives $representatives = NULL)
     {
         $this->id = $id;
@@ -44,6 +47,7 @@ class Counterparty extends \CommerceML\Implementation\Counterparty
         $this->lastName = $lastName;
         $this->firstName = $firstName;
         $this->address = $address;
+        $this->contacts = $contacts;
         $this->representatives = $representatives;
     }
 }
