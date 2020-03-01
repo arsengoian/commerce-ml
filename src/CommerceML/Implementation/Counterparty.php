@@ -12,6 +12,7 @@ namespace CommerceML\Implementation;
 use CommerceML\DefaultImplementation;
 use CommerceML\Implementation;
 use CommerceML\Nodes\Address;
+use CommerceML\Nodes\Contacts;
 use CommerceML\Nodes\Representatives;
 
 class Counterparty extends \CommerceML\Nodes\Counterparty implements Implementation
@@ -24,6 +25,7 @@ class Counterparty extends \CommerceML\Nodes\Counterparty implements Implementat
     protected $lastName;
     protected $firstName;
     protected $address;
+    protected $contacts;
     protected $representatives;
 
     use DefaultImplementation;
@@ -67,6 +69,11 @@ class Counterparty extends \CommerceML\Nodes\Counterparty implements Implementat
     public function address (): ?Address
     {
         return $this -> address;
+    }
+
+    public function contacts (): ?Contacts
+    {
+        return $this -> contacts;
     }
 
     public function representatives (): ?Representatives

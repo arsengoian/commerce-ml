@@ -29,7 +29,7 @@ abstract class Counterparty extends Node implements Composite
             'lastName' => 'Фамилия',
             'firstName' => 'Имя',
             'address' => NULL,
-            // Contacts?
+            'contacts' => NULL,
             'representatives' => NULL,
         ];
     }
@@ -57,6 +57,8 @@ abstract class Counterparty extends Node implements Composite
     abstract public function firstName(): ?string;
 
     abstract public function address(): ?Address;
+
+    abstract public function contacts(): ?Contacts;
 
     abstract public function representatives(): ?Representatives;
 
