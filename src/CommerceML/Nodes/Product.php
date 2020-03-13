@@ -24,6 +24,7 @@ abstract class Product extends Node implements Composite
             'id' => 'Ид',
             'catalogID' => 'ИдКаталога',
             'name' => 'Наименование',
+            'features' => NULL,
             'baseUnit' => NULL,
             'pricePerUnit' => 'ЦенаЗаЕдиницу',
             'quantity' => 'Количество',
@@ -45,6 +46,8 @@ abstract class Product extends Node implements Composite
     abstract public function catalogID(): ?string;
 
     abstract public function name(): string;
+    
+    abstract public function features(): ?Features;
 
     abstract public function baseUnit(): BaseUnit;
 

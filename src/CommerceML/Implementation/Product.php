@@ -13,6 +13,7 @@ use CommerceML\DefaultImplementation;
 use CommerceML\Implementation;
 use CommerceML\Nodes\Address;
 use CommerceML\Nodes\BaseUnit;
+use CommerceML\Nodes\Features;
 use CommerceML\Nodes\Representatives;
 use CommerceML\Nodes\RequisiteValues;
 
@@ -20,6 +21,7 @@ class Product extends \CommerceML\Nodes\Product implements Implementation
 {
     protected $id;
     protected $name;
+    protected $features;
     protected $catalogID;
     protected $baseUnit;
     protected $pricePerUnit;
@@ -40,6 +42,10 @@ class Product extends \CommerceML\Nodes\Product implements Implementation
         return $this -> name;
     }
 
+    public function features(): ?Features
+    {
+        return $this -> features;
+    }
 
     public function catalogID (): ?string
     {
