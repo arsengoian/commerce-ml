@@ -10,6 +10,7 @@ namespace CommerceML\Constructors;
 
 use CommerceML\Implementation\RequisiteValues;
 use CommerceML\Implementation\BaseUnit;
+use CommerceML\Implementation\Features;
 
 class Product extends \CommerceML\Implementation\Product
 {
@@ -23,6 +24,7 @@ class Product extends \CommerceML\Implementation\Product
      * @param $quantity
      * @param $sum
      * @param $requisiteValues
+     * @param $features
      */
     public function __construct (
         string $id,
@@ -32,7 +34,8 @@ class Product extends \CommerceML\Implementation\Product
         string $pricePerUnit,
         string $quantity,
         string $sum,
-        RequisiteValues $requisiteValues)
+        RequisiteValues $requisiteValues,
+        Features $features = NULL)
     {
         $this->id = $id;
         $this->name = $name;
@@ -42,5 +45,6 @@ class Product extends \CommerceML\Implementation\Product
         $this->quantity = $quantity;
         $this->sum = $sum;
         $this->requisiteValues = $requisiteValues;
+        $this->features = $features;
     }
 }
