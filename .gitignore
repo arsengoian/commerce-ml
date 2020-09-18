@@ -3,3 +3,4 @@ storage/*
 composer.lock
 /root/coverage/*
 vendor/*
+.phpunit.result.cache
