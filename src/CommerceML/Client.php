@@ -13,6 +13,7 @@ use CommerceML\Exceptions\CommerceMLLogicException;
 use CommerceML\Exceptions\CommerceMLParserException;
 use CommerceML\Node\Node;
 use DOMDocument;
+use ReflectionException;
 
 class Client
 {
@@ -34,18 +35,18 @@ class Client
             $commerceML = $dom ->saveXML();
 
             return (new Parser($commerceML)) -> parse();
-        } catch (\ReflectionException $e) {
+        } catch (ReflectionException $e) {
             throw new CommerceMLLogicException($e -> getMessage(), $e -> getCode(), $e);
         }
     }
 
 
-    public static function toString(Tag $root): string
+    public static function toString(Tag $root, $encodeTo = 'windows-1251'): string
     {
         $commerceML = (new Encoder($root)) -> toCommerceML();
 
         ($dom = new DOMDocument()) -> loadXML($commerceML);
-        $dom -> encoding = 'windows-1251';
+        $dom -> encoding = $encodeTo;
         $commerceML = $dom -> saveXML();
 
         return $commerceML;

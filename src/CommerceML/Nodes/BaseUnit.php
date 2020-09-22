@@ -29,12 +29,13 @@ abstract class BaseUnit extends Node implements AttributeContaining
     {
         return [
             'code' => 'Код',
-            'fullName' => 'НаименованиеПолное',             'short' => 'МеждународноеСокращение'
+            'fullName' => 'НаименованиеПолное',
+            'short' => 'МеждународноеСокращение'
         ];
     }
 
 
-    abstract function code(): int;
+    abstract function code(): string;
 
     abstract function fullName(): string;
 

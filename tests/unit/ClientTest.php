@@ -11,7 +11,6 @@ namespace Test;
 
 use CommerceML\Client;
 use CommerceML\Nodes\CommercialInformation;
-use CommerceML\Nodes\Document;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -19,7 +18,7 @@ class ClientTest extends TestCase
 
     public function testGeneral ()
     {
-        $contents = file_get_contents('E:\Developer\PHP\CommerceML\tests\XML\to.xml');
+        $contents = file_get_contents(realpath(__DIR__ . '/../XML/to.xml'));
         $commerceML = Client::toCommerceML($contents);
         $string = Client::toString($commerceML);
         $this -> assertEquals($contents, $string);
@@ -47,17 +46,25 @@ class ClientTest extends TestCase
 
         $xml = Client::toString($stub);
 
-        $this -> assertEquals(trim("<?xml version=\"1.0\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"><Документ><Ид>45</Ид><Номер>143</Номер></Документ><Документ><Ид>45</Ид><Номер>143</Номер></Документ></КоммерческаяИнформация>\n"),
-            trim($xml));
+        $need = iconv('utf-8', 'windows-1251', trim("<?xml version=\"1.0\" encoding=\"windows-1251\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"/>\n"));
+        $this -> assertEquals($need, trim($xml));
     }
 
 
     public function testParsesStubOk() {
-        $stub = "<?xml version=\"1.0\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"><Документ><Ид>44</Ид><Номер>143</Номер></Документ><Документ><Ид>45</Ид><Номер>143</Номер></Документ><Документ><Ид>46</Ид><Номер>143</Номер></Документ></КоммерческаяИнформация>\n";
+        $stub = "<?xml version=\"1.0\"?>\n<КоммерческаяИнформация ВерсияСхемы=\"2\" ДатаФормирования=\"2007-10-30\"><Документ><Ид>44</Ид><Номер>143</Номер></Документ><Документ><Ид>45</Ид><Номер>145</Номер><Сумма>999.99</Сумма></Документ><Документ><Ид>46</Ид><Номер>143</Номер></Документ></КоммерческаяИнформация>\n";
 
         $commerceML = Client::toCommerceML($stub);
 
-        self::assertObjectHasAttribute('none', $commerceML);
+        self::assertObjectHasAttribute('documents', $commerceML);
+        self::assertCount(3, $commerceML->documents());
+
+        /** @var \CommerceML\Constructors\Document $document */
+        $document = $commerceML->documents()[1];
+
+        self::assertSame('45', $document->id());
+        self::assertSame('145', $document->number());
+        self::assertSame('999.99', $document->sum());
     }
 
 }

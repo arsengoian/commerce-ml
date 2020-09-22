@@ -35,7 +35,7 @@ abstract class Document extends Node implements Composite
             'sum' => 'Сумма',
             'counterparties' => NULL,
             'time' => 'Время',
-            // Comment?
+            'comment' => 'Комментарий',
             'products' => NULL,
             'requisiteValues' => NULL
         ];
