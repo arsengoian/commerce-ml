@@ -41,15 +41,13 @@ class Client
     }
 
 
-    public static function toString(Tag $root, $encodeToWin1251 = true): string
+    public static function toString(Tag $root, $encodeTo = 'windows-1251'): string
     {
         $commerceML = (new Encoder($root)) -> toCommerceML();
 
-        if ($encodeToWin1251) {
-            ($dom = new DOMDocument()) -> loadXML($commerceML);
-            $dom -> encoding = 'windows-1251';
-            $commerceML = $dom -> saveXML();
-        }
+        ($dom = new DOMDocument()) -> loadXML($commerceML);
+        $dom -> encoding = $encodeTo;
+        $commerceML = $dom -> saveXML();
 
         return $commerceML;
     }
