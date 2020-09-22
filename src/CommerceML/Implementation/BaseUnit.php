@@ -22,7 +22,7 @@ class BaseUnit extends \CommerceML\Nodes\BaseUnit implements Implementation
     use DefaultImplementation;
 
 
-    function code (): int
+    function code (): string
     {
         return $this -> code;
     }
