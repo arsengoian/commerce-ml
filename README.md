@@ -41,7 +41,7 @@ To use custom classes while parsing, before calling `Client::toString()`, do:
 use CommerceML\Node\Node
 
 Node::overrideImplementations([
-    ProductCustomImplementation::class, // Must inherit from CommmerceML\Implementations\Product
+    ProductCustomImplementation::class, // Must inherit from CommerceML\Implementations\Product
 ]);
 
 ```
